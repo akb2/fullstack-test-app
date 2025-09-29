@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36414.22 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "fullstacktestapp.client", "fullstacktestapp.client\fullstacktestapp.client.esproj", "{B23D68C3-D32B-C64A-FB8D-FA1077A819C3}"
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "client", "fullstacktestapp.client\client.esproj", "{B23D68C3-D32B-C64A-FB8D-FA1077A819C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullstackTestApp.Server", "FullstackTestApp.Server\FullstackTestApp.Server.csproj", "{F0FD0DDD-069A-4C78-B75D-51EA9A970A54}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "FullstackTestApp.Server\Server.csproj", "{F0FD0DDD-069A-4C78-B75D-51EA9A970A54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

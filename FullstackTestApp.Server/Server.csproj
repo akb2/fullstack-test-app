@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\fullstacktestapp.client\fullstacktestapp.client.esproj">
+    <ProjectReference Include="..\fullstacktestapp.client\client.esproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
