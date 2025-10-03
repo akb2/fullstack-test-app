@@ -9,7 +9,7 @@
       "webRoot": "${workspaceFolder}"
     },
     {
-      "type": "chrome",
+      "type": "pwa-chrome",
       "request": "launch",
       "name": "localhost (Chrome)",
       "url": "https://localhost:58598",
