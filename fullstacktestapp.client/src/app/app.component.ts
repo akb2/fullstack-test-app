@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectorRef, ChangeDetectionStrategy, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 interface WeatherForecast {
   date: string;
@@ -11,27 +12,31 @@ interface WeatherForecast {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
   standalone: false,
-  styleUrl: './app.component.css'
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
-  public forecasts: WeatherForecast[] = [];
+  private readonly httpClient = inject(HttpClient);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
-  constructor(private http: HttpClient) {}
+  forecasts: WeatherForecast[] = [];
 
-  ngOnInit() {
+  ngOnInit () {
     this.getForecasts();
   }
 
-  getForecasts() {
-    this.http.get<WeatherForecast[]>('/weatherforecast').subscribe(
-      (result) => {
-        this.forecasts = result;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+  getForecasts () {
+    this.httpClient.get<WeatherForecast[]>('/weatherforecast')
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: result => {
+          this.forecasts = result;
+          this.changeDetectorRef.markForCheck();
+        },
+        error: console.error
+      });
   }
 
   title = 'fullstacktestapp.client';
